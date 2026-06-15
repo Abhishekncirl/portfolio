@@ -94,7 +94,14 @@ a:hover { color: var(--accent-2); }
   color: var(--text);
 }
 .accent { color: var(--muted); }
-.lede { color: var(--muted); font-size: 1.08rem; max-width: 60ch; }
+.lede {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 60ch;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
 .hero-cta {
   display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.6rem 0;
 }
@@ -155,11 +162,6 @@ a:hover { color: var(--accent-2); }
   display: flex; align-items: baseline; gap: 0.9rem;
   margin-bottom: 2rem;
 }
-.section-num {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
 .section-head h2 {
   font-size: clamp(1.6rem, 2.8vw, 2.2rem);
   margin: 0;
@@ -169,7 +171,13 @@ a:hover { color: var(--accent-2); }
 
 /* ABOUT */
 .about-grid { max-width: 80ch; }
-.about-grid p { color: var(--muted); margin: 0 0 1rem; }
+.about-grid p {
+  color: var(--muted);
+  margin: 0 0 1rem;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
 .about-grid p:first-child { color: var(--text); font-size: 1.05rem; }
 .about-tags {
   list-style: none; padding: 0; margin: 1.5rem 0 0;
@@ -225,7 +233,12 @@ a:hover { color: var(--accent-2); }
 .t-body h3 { margin: 0 0 0.6rem; font-size: 1.15rem; color: var(--text); }
 .t-co { color: var(--muted); font-weight: 500; }
 .t-body ul { margin: 0.5rem 0 0; padding-left: 1.1rem; color: var(--muted); }
-.t-body li { margin: 0.3rem 0; }
+.t-body li {
+  margin: 0.3rem 0;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
 .chips { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .chips span {
   background: var(--bg-soft);
@@ -272,7 +285,14 @@ a:hover { color: var(--accent-2); }
   border-radius: 999px;
   white-space: nowrap;
 }
-.project p { color: var(--muted); margin: 0.35rem 0; font-size: 0.92rem; }
+.project p {
+  color: var(--muted);
+  margin: 0.35rem 0;
+  font-size: 0.92rem;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
 .project p b { color: var(--text); font-weight: 600; }
 .project .chips { margin-top: auto; padding-top: 0.8rem; }
 
@@ -341,6 +361,9 @@ a:hover { color: var(--accent-2); }
   max-width: 70ch;
   margin: 0 0 1.5rem;
   font-size: 1.05rem;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
 }
 .contact-lede b { color: var(--text); }
 .contact-grid {
