@@ -134,6 +134,27 @@ a:hover { color: var(--accent-2); }
 }
 .hero-meta strong { color: var(--text); margin-right: 0.3rem; font-weight: 700; }
 
+.hero-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.hero-photo {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  box-shadow: var(--shadow-strong);
+  aspect-ratio: 4 / 5;
+}
+.hero-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
 .hero-card {
   background: var(--bg-soft);
   border: 1px solid var(--line);
