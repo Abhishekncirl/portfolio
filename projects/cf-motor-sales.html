@@ -27,6 +27,8 @@
       --shadow-strong:0 12px 30px rgba(15,23,42,.08);
       --maxw:900px;
       --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+      --active:#16a34a;
+      --active-soft:#22c55e;
     }
     *{box-sizing:border-box;}
     body{
@@ -146,7 +148,13 @@
     .flow{list-style:none; margin:0; padding:0; position:relative;}
     .flow::before{
       content:""; position:absolute; left:19px; top:6px; bottom:6px;
-      width:2px; background:var(--line);
+      width:2px; border-radius:2px;
+      background:linear-gradient(180deg,
+        var(--active-soft) 0%,
+        var(--active-soft) calc(var(--progress, 0) * 100%),
+        var(--line) calc(var(--progress, 0) * 100%),
+        var(--line) 100%);
+      transition: background 160ms linear;
     }
     .flow li{position:relative; padding:0 0 1.4rem 3.4rem;}
 
@@ -175,25 +183,43 @@
       transform:scale(1.12) rotate(0);
       box-shadow:0 0 0 5px var(--bg), 0 0 0 10px rgba(11,18,32,0.08), 0 8px 20px rgba(11,18,32,0.18);
     }
-    .flow li.in:hover::before{ opacity:1; }
+    /* Scroll-driven: numbers past the viewport trigger line turn green */
+    .flow li.active .n{
+      background:var(--active);
+      color:#ffffff;
+      box-shadow:
+        0 0 0 5px var(--bg),
+        0 0 0 10px rgba(34,197,94,0.14),
+        0 8px 22px rgba(22,163,74,0.30);
+    }
+    .flow li.active .n:hover{
+      background:#15803d;
+      box-shadow:
+        0 0 0 5px var(--bg),
+        0 0 0 12px rgba(34,197,94,0.18),
+        0 10px 26px rgba(22,163,74,0.40);
+    }
+    .flow li.active h3{ color:var(--active); transition: color 320ms ease; }
+
     /* Ping ripple when the number appears */
     .flow .n::after{
       content:""; position:absolute; inset:-5px; border-radius:50%;
-      border:2px solid var(--text); opacity:0;
+      border:2px solid currentColor; opacity:0;
     }
     .flow li.in .n::after{
       animation: nPing 900ms var(--ease-out-expo) 120ms both;
     }
+    .flow li.active .n::after{ border-color: var(--active-soft); }
     @keyframes nPing{
       0%   { transform:scale(0.9); opacity:0.55; }
       100% { transform:scale(1.9); opacity:0; }
     }
 
-    .flow h3{margin:.25rem 0 .2rem; font-size:1rem; color:var(--text);}
+    .flow h3{margin:.25rem 0 .2rem; font-size:1rem; color:var(--text); transition: color 320ms ease;}
     .flow p{margin:0; font-size:.9rem; color:var(--muted);}
 
     @media (prefers-reduced-motion: reduce){
-      .flow .n{ transform:none; opacity:1; transition:none; }
+      .flow .n{ transform:none; opacity:1; transition: background 240ms ease, color 240ms ease; }
       .flow .n::after{ display:none; }
     }
 
@@ -390,17 +416,67 @@
 <script>
   (function(){
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var items = document.querySelectorAll('.flow li');
-    if (reduce || !('IntersectionObserver' in window)) {
+    var flow = document.querySelector('.flow');
+    if (!flow) return;
+    var items = Array.prototype.slice.call(flow.querySelectorAll('li'));
+
+    // One-time spring reveal per item (unchanged)
+    if (!reduce && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.3 });
+      items.forEach(function(li){ io.observe(li); });
+    } else {
       items.forEach(function(li){ li.classList.add('in'); });
-      return;
     }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+
+    // Scroll-driven green progress — connector fills and numbers flip to green
+    // as each one crosses the viewport trigger line.
+    var rafId = null;
+    function update(){
+      rafId = null;
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var triggerY = vh * 0.55;
+
+      // Progress along the connector line (top of first .n to top of last .n)
+      var firstN = items[0] && items[0].querySelector('.n');
+      var lastN  = items[items.length - 1] && items[items.length - 1].querySelector('.n');
+      if (firstN && lastN) {
+        var startY = firstN.getBoundingClientRect().top + 20;   // centre of first badge
+        var endY   = lastN.getBoundingClientRect().top + 20;    // centre of last badge
+        var span   = Math.max(1, endY - startY);
+        var p = (triggerY - startY) / span;
+        if (p < 0) p = 0;
+        if (p > 1) p = 1;
+        flow.style.setProperty('--progress', p.toFixed(3));
+      }
+
+      // Flip each item to green when its badge centre crosses the trigger
+      items.forEach(function(li){
+        var n = li.querySelector('.n');
+        if (!n) return;
+        var r = n.getBoundingClientRect();
+        var centre = r.top + r.height / 2;
+        if (centre <= triggerY) li.classList.add('active');
+        else li.classList.remove('active');
       });
-    }, { threshold: 0.3 });
-    items.forEach(function(li){ io.observe(li); });
+    }
+    function onScroll(){
+      if (rafId == null) rafId = requestAnimationFrame(update);
+    }
+
+    if (reduce) {
+      // Reduced motion: mark everything active, fill the line, no scroll loop
+      items.forEach(function(li){ li.classList.add('active'); });
+      flow.style.setProperty('--progress', '1');
+    } else {
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll);
+      // first frame
+      requestAnimationFrame(update);
+    }
   })();
 </script>
 
