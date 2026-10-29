@@ -45,20 +45,21 @@
   </header>
 
   <main id="top-content">
+    <div class="apple-dark">
     <section class="hero">
       <div class="profile-banner" aria-hidden="true">
         <svg class="banner-chart" viewBox="0 0 1400 280" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="lineFill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"  stop-color="#0b1220" stop-opacity="0.22"/>
-              <stop offset="100%" stop-color="#0b1220" stop-opacity="0"/>
+              <stop offset="0%"  stop-color="currentColor" stop-opacity="0.22"/>
+              <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
             </linearGradient>
             <linearGradient id="lineStroke" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"  stop-color="#0b1220" stop-opacity="0.35"/>
-              <stop offset="100%" stop-color="#0b1220" stop-opacity="0.85"/>
+              <stop offset="0%"  stop-color="currentColor" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="currentColor" stop-opacity="0.85"/>
             </linearGradient>
             <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M40 0 H0 V40" fill="none" stroke="#0b1220" stroke-opacity="0.05" stroke-width="1"/>
+              <path d="M40 0 H0 V40" fill="none" stroke="currentColor" stroke-opacity="0.05" stroke-width="1"/>
             </pattern>
             <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
               <feGaussianBlur stdDeviation="0.4"/>
@@ -68,7 +69,7 @@
           <rect width="1400" height="280" fill="url(#grid)"/>
 
           <!-- Constellation (data nodes + edges) -->
-          <g class="constellation" stroke="#0b1220" stroke-opacity="0.15" stroke-width="1" fill="#0b1220" fill-opacity="0.35">
+          <g class="constellation" stroke="currentColor" stroke-opacity="0.15" stroke-width="1" fill="currentColor" fill-opacity="0.35">
             <line x1="80"   y1="50"  x2="180"  y2="80"/>
             <line x1="180"  y1="80"  x2="260"  y2="40"/>
             <line x1="260"  y1="40"  x2="360"  y2="70"/>
@@ -99,7 +100,7 @@
 
           <!-- Bar chart bottom-left -->
           <g class="bars">
-            <g fill="#0b1220" fill-opacity="0.22">
+            <g fill="currentColor" fill-opacity="0.22">
               <rect x="60"  y="195" width="24" height="55"/>
               <rect x="96"  y="170" width="24" height="80"/>
               <rect x="132" y="150" width="24" height="100"/>
@@ -108,7 +109,7 @@
               <rect x="240" y="115" width="24" height="135"/>
               <rect x="276" y="95"  width="24" height="155"/>
             </g>
-            <g font-family="JetBrains Mono, monospace" font-size="10" fill="#0b1220" fill-opacity="0.45">
+            <g font-family="JetBrains Mono, monospace" font-size="10" fill="currentColor" fill-opacity="0.45">
               <text x="72"  y="265" text-anchor="middle">Q1</text>
               <text x="108" y="265" text-anchor="middle">Q2</text>
               <text x="144" y="265" text-anchor="middle">Q3</text>
@@ -117,29 +118,29 @@
               <text x="252" y="265" text-anchor="middle">Q6</text>
               <text x="288" y="265" text-anchor="middle">Q7</text>
             </g>
-            <line x1="50" y1="252" x2="310" y2="252" stroke="#0b1220" stroke-opacity="0.25"/>
-            <text x="50" y="135" font-family="JetBrains Mono, monospace" font-size="10" fill="#0b1220" fill-opacity="0.55">Throughput</text>
+            <line x1="50" y1="252" x2="310" y2="252" stroke="currentColor" stroke-opacity="0.25"/>
+            <text x="50" y="135" font-family="JetBrains Mono, monospace" font-size="10" fill="currentColor" fill-opacity="0.55">Throughput</text>
           </g>
 
           <!-- KPI tiles -->
           <g class="kpis" font-family="Inter, sans-serif">
             <g transform="translate(420 140)">
-              <rect width="150" height="68" rx="10" fill="#ffffff" fill-opacity="0.95" stroke="#0b1220" stroke-opacity="0.15" filter="drop-shadow(0 2px 4px rgba(11,18,32,0.08))"/>
-              <text x="14" y="26" font-size="10" fill="#0b1220" fill-opacity="0.55" letter-spacing="1">REPORTING TIME</text>
-              <text x="14" y="52" font-size="22" font-weight="700" fill="#0b1220" fill-opacity="0.85">-40%</text>
-              <text x="100" y="52" font-size="11" fill="#0b1220" fill-opacity="0.55">YoY</text>
+              <rect width="150" height="68" rx="10" fill="#ffffff" fill-opacity="0.95" stroke="currentColor" stroke-opacity="0.15" filter="drop-shadow(0 2px 4px rgba(11,18,32,0.08))"/>
+              <text x="14" y="26" font-size="10" fill="currentColor" fill-opacity="0.55" letter-spacing="1">REPORTING TIME</text>
+              <text x="14" y="52" font-size="22" font-weight="700" fill="currentColor" fill-opacity="0.85">-40%</text>
+              <text x="100" y="52" font-size="11" fill="currentColor" fill-opacity="0.55">YoY</text>
             </g>
             <g transform="translate(600 110)">
-              <rect width="150" height="68" rx="10" fill="#ffffff" fill-opacity="0.95" stroke="#0b1220" stroke-opacity="0.15" filter="drop-shadow(0 2px 4px rgba(11,18,32,0.08))"/>
-              <text x="14" y="26" font-size="10" fill="#0b1220" fill-opacity="0.55" letter-spacing="1">RETENTION</text>
-              <text x="14" y="52" font-size="22" font-weight="700" fill="#0b1220" fill-opacity="0.85">+12%</text>
-              <text x="100" y="52" font-size="11" fill="#0b1220" fill-opacity="0.55">cohort</text>
+              <rect width="150" height="68" rx="10" fill="#ffffff" fill-opacity="0.95" stroke="currentColor" stroke-opacity="0.15" filter="drop-shadow(0 2px 4px rgba(11,18,32,0.08))"/>
+              <text x="14" y="26" font-size="10" fill="currentColor" fill-opacity="0.55" letter-spacing="1">RETENTION</text>
+              <text x="14" y="52" font-size="22" font-weight="700" fill="currentColor" fill-opacity="0.85">+12%</text>
+              <text x="100" y="52" font-size="11" fill="currentColor" fill-opacity="0.55">cohort</text>
             </g>
             <g transform="translate(780 140)">
-              <rect width="150" height="68" rx="10" fill="#ffffff" fill-opacity="0.95" stroke="#0b1220" stroke-opacity="0.15" filter="drop-shadow(0 2px 4px rgba(11,18,32,0.08))"/>
-              <text x="14" y="26" font-size="10" fill="#0b1220" fill-opacity="0.55" letter-spacing="1">FCR · SUPPORT</text>
-              <text x="14" y="52" font-size="22" font-weight="700" fill="#0b1220" fill-opacity="0.85">95%</text>
-              <text x="100" y="52" font-size="11" fill="#0b1220" fill-opacity="0.55">SLA</text>
+              <rect width="150" height="68" rx="10" fill="#ffffff" fill-opacity="0.95" stroke="currentColor" stroke-opacity="0.15" filter="drop-shadow(0 2px 4px rgba(11,18,32,0.08))"/>
+              <text x="14" y="26" font-size="10" fill="currentColor" fill-opacity="0.55" letter-spacing="1">FCR · SUPPORT</text>
+              <text x="14" y="52" font-size="22" font-weight="700" fill="currentColor" fill-opacity="0.85">95%</text>
+              <text x="100" y="52" font-size="11" fill="currentColor" fill-opacity="0.55">SLA</text>
             </g>
           </g>
 
@@ -151,7 +152,7 @@
                   d="M970 220 L1030 195 L1090 205 L1150 165 L1210 175 L1270 130 L1330 110 L1370 95"
                   fill="none" stroke="url(#lineStroke)" stroke-width="2.4"
                   stroke-linecap="round" stroke-linejoin="round" filter="url(#soft)"/>
-            <g fill="#0b1220" fill-opacity="0.85">
+            <g fill="currentColor" fill-opacity="0.85">
               <circle cx="970"  cy="220" r="3"/>
               <circle cx="1030" cy="195" r="3"/>
               <circle cx="1090" cy="205" r="3"/>
@@ -161,26 +162,26 @@
               <circle cx="1330" cy="110" r="3"/>
               <circle cx="1370" cy="95"  r="4"/>
             </g>
-            <line x1="960" y1="252" x2="1380" y2="252" stroke="#0b1220" stroke-opacity="0.25"/>
-            <text x="960" y="100" font-family="JetBrains Mono, monospace" font-size="10" fill="#0b1220" fill-opacity="0.55">Decisions / wk</text>
+            <line x1="960" y1="252" x2="1380" y2="252" stroke="currentColor" stroke-opacity="0.25"/>
+            <text x="960" y="100" font-family="JetBrains Mono, monospace" font-size="10" fill="currentColor" fill-opacity="0.55">Decisions / wk</text>
             <g transform="translate(1290 65)">
-              <rect x="-4" y="-12" width="78" height="20" rx="10" fill="#0b1220" fill-opacity="0.85"/>
+              <rect x="-4" y="-12" width="78" height="20" rx="10" fill="currentColor" fill-opacity="0.85"/>
               <text x="35" y="2" font-family="JetBrains Mono, monospace" font-size="10" fill="#ffffff" text-anchor="middle">↑ trend</text>
             </g>
-            <line x1="1330" y1="73" x2="1330" y2="103" stroke="#0b1220" stroke-opacity="0.5" stroke-dasharray="2 3"/>
+            <line x1="1330" y1="73" x2="1330" y2="103" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="2 3"/>
           </g>
 
           <!-- Sparkline ribbon top-right -->
           <g class="ribbon" transform="translate(960 38)">
-            <text font-family="JetBrains Mono, monospace" font-size="10" fill="#0b1220" fill-opacity="0.55">UAT pass rate</text>
+            <text font-family="JetBrains Mono, monospace" font-size="10" fill="currentColor" fill-opacity="0.55">UAT pass rate</text>
             <polyline points="0,22 18,18 36,20 54,12 72,15 90,8 108,11 126,5"
-                      fill="none" stroke="#0b1220" stroke-opacity="0.55" stroke-width="1.6"
+                      fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="1.6"
                       stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="135" y="12" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#0b1220" fill-opacity="0.85">98%</text>
+            <text x="135" y="12" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="currentColor" fill-opacity="0.85">98%</text>
           </g>
 
           <!-- Narrative ticker -->
-          <g class="ticker" font-family="JetBrains Mono, monospace" font-size="11" fill="#0b1220" fill-opacity="0.45">
+          <g class="ticker" font-family="JetBrains Mono, monospace" font-size="11" fill="currentColor" fill-opacity="0.45">
             <text x="340" y="60">BRD →</text>
             <text x="430" y="60">SRS →</text>
             <text x="510" y="60">UAT →</text>
@@ -353,6 +354,8 @@
         </ul>
       </div>
     </section>
+
+    </div><!-- /.apple-dark -->
 
     <section id="experience" class="section">
       <div class="section-head">

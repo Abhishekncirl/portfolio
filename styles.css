@@ -158,6 +158,7 @@ body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
   height: 100%;
   display: block;
   will-change: contents;
+  color: #0b1220;
 }
 .profile-banner::after {
   content: "";
@@ -856,3 +857,144 @@ body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
 }
 
 /* Light theme only. Intentionally no prefers-color-scheme dark override. */
+
+/* ------------------------------------------------------------------ */
+/* APPLE DARK ZONE — Hero + Quick-glance + About wear Apple's black.  */
+/* Everything after this wrapper reverts to the default light theme.  */
+/* ------------------------------------------------------------------ */
+.apple-dark {
+  background: #000000;
+  color: #f5f5f7;
+  --text: #f5f5f7;
+  --muted: #86868b;
+  --bg: #000000;
+  --bg-soft: #1d1d1f;
+  --bg-card: #1d1d1f;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.18);
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  --shadow-strong: 0 12px 30px rgba(0, 0, 0, 0.55);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero banner adapts to dark */
+.apple-dark .profile-banner {
+  background: linear-gradient(135deg, #000000 0%, #141414 50%, #000000 100%);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.apple-dark .profile-banner::after {
+  background: radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.65) 0%, transparent 55%);
+}
+.apple-dark .profile-avatar {
+  border-color: #000000;
+  background: #1d1d1f;
+}
+
+/* Banner chart inherits currentColor; flip the one hard-coded tile fill */
+.apple-dark .banner-chart { color: #f5f5f7; }
+.apple-dark .banner-chart rect[fill="#ffffff"] { fill: #1d1d1f; }
+/* ↑ trend pill: text stays white, pill (currentColor) becomes light so pill-text contrasts */
+.apple-dark .banner-chart g.line-chart g[transform="translate(1290 65)"] rect { fill: #ffffff; }
+.apple-dark .banner-chart g.line-chart g[transform="translate(1290 65)"] text { fill: #000000 !important; }
+
+/* Section headings and dividers inside the dark zone */
+.apple-dark .section { border-top-color: rgba(255, 255, 255, 0.08); }
+.apple-dark .section-head h2 { color: #f5f5f7; }
+
+/* About block */
+.apple-dark .about-grid p { color: #86868b; }
+.apple-dark .about-grid p:first-child { color: #f5f5f7; }
+.apple-dark .about-tags li {
+  background: #1d1d1f;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #f5f5f7;
+}
+
+/* Hero card and card rows */
+.apple-dark .hero-card {
+  background: #1d1d1f;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.apple-dark .card-row { border-bottom-color: rgba(255, 255, 255, 0.08); }
+.apple-dark .card-row span { color: #86868b; }
+.apple-dark .card-row b { color: #f5f5f7; }
+
+/* Hero meta row */
+.apple-dark .hero-meta { color: #86868b; }
+.apple-dark .hero-meta strong { color: #f5f5f7; }
+
+/* Hero title + lede + eyebrow */
+.apple-dark .profile-head h1,
+.apple-dark .profile-tagline { color: #f5f5f7; }
+.apple-dark .eyebrow { color: #86868b; }
+.apple-dark .lede { color: #86868b; }
+
+/* Buttons invert tastefully */
+.apple-dark .btn-primary {
+  background: #f5f5f7;
+  color: #000000;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.12);
+}
+.apple-dark .btn-primary:hover {
+  background: #ffffff;
+  color: #000000;
+  box-shadow: 0 10px 24px rgba(255, 255, 255, 0.18);
+}
+.apple-dark .btn-ghost {
+  background: transparent;
+  color: #f5f5f7;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.apple-dark .btn-ghost:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+/* Quick-glance pills flip white-on-dark */
+.apple-dark .qg-btn {
+  background: #f5f5f7;
+  color: #1d1d1f;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+.apple-dark .qg-btn:hover {
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+.apple-dark .qg-btn[aria-expanded="true"] {
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+}
+.apple-dark .qg-plus { color: #1d1d1f; }
+.apple-dark .qg-btn:focus-visible { outline-color: #ffffff; }
+
+/* Quick-glance panels and their inner cards */
+.apple-dark .qg-panel {
+  background: #0a0a0a;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+}
+.apple-dark .qg-panel h3 { color: #f5f5f7; }
+.apple-dark .qg-stats > div,
+.apple-dark .qg-list li {
+  background: #1d1d1f;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.apple-dark .qg-stats b,
+.apple-dark .qg-list li b { color: #f5f5f7; }
+.apple-dark .qg-stats span { color: #86868b; }
+.apple-dark .qg-list li { color: #86868b; }
+.apple-dark .qg-chips span {
+  background: #1d1d1f;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #f5f5f7;
+}
+.apple-dark .qg-foot { color: #86868b; }
+.apple-dark .qg-foot a { color: #f5f5f7; }
+
+/* Reveal-on-scroll inside dark zone still works (inherits .in from the global rule) */
+
+/* Nav glass stays white-tinted (Apple does this over dark too). Scroll edge
+   fade matches the content below it — flip to dark where it meets dark. */
+.apple-dark + .section::before,
+.apple-dark ~ .section:first-of-type { position: relative; }
