@@ -220,6 +220,104 @@
       </aside>
     </section>
 
+    <section class="quick-glance" aria-labelledby="quick-glance-heading">
+      <h2 id="quick-glance-heading" class="visually-hidden">Quick glance</h2>
+      <ul class="qg-pills" role="list">
+        <li class="qg-item">
+          <button class="qg-btn" type="button" aria-expanded="false" aria-controls="qg-impact" data-panel="impact">
+            <svg class="qg-plus" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="11.3" fill="none" stroke="currentColor" stroke-width="1.3"></circle>
+              <g transform="translate(7 7)" fill="currentColor">
+                <path d="M9 4H6V1a1 1 0 0 0-2 0v3H1a1 1 0 0 0 0 2h3v3a1 1 0 0 0 2 0V6h3a1 1 0 0 0 0-2z"/>
+              </g>
+            </svg>
+            <span>Impact</span>
+          </button>
+        </li>
+        <li class="qg-item">
+          <button class="qg-btn" type="button" aria-expanded="false" aria-controls="qg-experience" data-panel="experience">
+            <svg class="qg-plus" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="11.3" fill="none" stroke="currentColor" stroke-width="1.3"></circle>
+              <g transform="translate(7 7)" fill="currentColor">
+                <path d="M9 4H6V1a1 1 0 0 0-2 0v3H1a1 1 0 0 0 0 2h3v3a1 1 0 0 0 2 0V6h3a1 1 0 0 0 0-2z"/>
+              </g>
+            </svg>
+            <span>Experience</span>
+          </button>
+        </li>
+        <li class="qg-item">
+          <button class="qg-btn" type="button" aria-expanded="false" aria-controls="qg-skills" data-panel="skills">
+            <svg class="qg-plus" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="11.3" fill="none" stroke="currentColor" stroke-width="1.3"></circle>
+              <g transform="translate(7 7)" fill="currentColor">
+                <path d="M9 4H6V1a1 1 0 0 0-2 0v3H1a1 1 0 0 0 0 2h3v3a1 1 0 0 0 2 0V6h3a1 1 0 0 0 0-2z"/>
+              </g>
+            </svg>
+            <span>Skills</span>
+          </button>
+        </li>
+        <li class="qg-item">
+          <button class="qg-btn" type="button" aria-expanded="false" aria-controls="qg-open" data-panel="open">
+            <svg class="qg-plus" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="11.3" fill="none" stroke="currentColor" stroke-width="1.3"></circle>
+              <g transform="translate(7 7)" fill="currentColor">
+                <path d="M9 4H6V1a1 1 0 0 0-2 0v3H1a1 1 0 0 0 0 2h3v3a1 1 0 0 0 2 0V6h3a1 1 0 0 0 0-2z"/>
+              </g>
+            </svg>
+            <span>Open to</span>
+          </button>
+        </li>
+      </ul>
+
+      <div class="qg-panels">
+        <div class="qg-panel" id="qg-impact" role="region" aria-label="Impact numbers" hidden>
+          <h3>Impact at a glance</h3>
+          <div class="qg-stats">
+            <div><b>40%</b><span>less manual reporting (Power BI + SQL automation)</span></div>
+            <div><b>95%</b><span>first-call resolution on 25+ tickets/day (Jira · ServiceNow)</span></div>
+            <div><b>15+</b><span>CRM &amp; ERP integrations shipped with full traceability</span></div>
+            <div><b>30%</b><span>reduction in aged backlog via incident-trend analysis</span></div>
+            <div><b>20%</b><span>drop in post-release issues through UAT discipline</span></div>
+            <div><b>+12%</b><span>cohort retention from workforce analytics</span></div>
+          </div>
+        </div>
+
+        <div class="qg-panel" id="qg-experience" role="region" aria-label="Experience summary" hidden>
+          <h3>Where I've worked</h3>
+          <ul class="qg-list">
+            <li><b>Airport Energy Ltd</b> · Customer Support Analyst · Dublin · Oct 2024 to present</li>
+            <li><b>National College of Ireland</b> · Lab Assistant · Dublin · Sep 2024 to Jan 2025</li>
+            <li><b>Prajeev Investments Ltd</b> · Associate Business Analyst · Kolkata · May 2023 to Jan 2024</li>
+            <li><b>Prajeev Investments Ltd</b> · Business Analyst · Kolkata · Feb 2022 to Jan 2024</li>
+          </ul>
+          <p class="qg-foot">3+ years across BA, data, and technology support in Agile and hybrid environments.</p>
+        </div>
+
+        <div class="qg-panel" id="qg-skills" role="region" aria-label="Core skills" hidden>
+          <h3>Core skills</h3>
+          <div class="qg-chips">
+            <span>SQL</span><span>Power BI</span><span>Tableau</span><span>Python</span><span>Excel</span>
+            <span>BRD / SRS / SOP</span><span>UAT</span><span>Agile · SDLC</span><span>Change Control</span>
+            <span>Jira · ServiceNow</span><span>Zendesk · Smartsheet</span><span>AWS · Azure</span>
+            <span>Scikit-learn</span><span>SageMaker</span><span>LLM tooling</span>
+          </div>
+          <p class="qg-foot">Full breakdown in the <a href="#skills">Skills</a> section below.</p>
+        </div>
+
+        <div class="qg-panel" id="qg-open" role="region" aria-label="Roles open to" hidden>
+          <h3>Open to work</h3>
+          <ul class="qg-list">
+            <li><b>Business Analyst</b> — requirements, BRD/SRS/SOP, UAT, change control</li>
+            <li><b>Data Analyst</b> — SQL, Power BI, Tableau, Python automation</li>
+            <li><b>IT Analyst</b> — tech support with structured incident analysis</li>
+            <li><b>Product / Operations Analyst</b> — process design, KPI tracking</li>
+          </ul>
+          <p class="qg-foot">Based in Dublin · open to on-site and hybrid roles across Ireland.
+            <a href="#contact">Get in touch →</a></p>
+        </div>
+      </div>
+    </section>
+
     <section id="about" class="section">
       <div class="section-head">
         <h2>About</h2>
