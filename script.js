@@ -27,60 +27,76 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeMenu();
 });
 
-// Quick-glance pill controls (Apple product-viewer pattern) — single-select accordion
+// Pill controls (Apple product-viewer pattern) — scoped per [data-pill-group].
+// Each group is an independent single-select accordion.
 (function () {
-  const buttons = document.querySelectorAll(".qg-btn");
-  const panels = document.querySelectorAll(".qg-panel");
-  if (!buttons.length) return;
+  const groups = document.querySelectorAll("[data-pill-group]");
+  if (!groups.length) return;
 
-  const closeAll = () => {
-    buttons.forEach((b) => b.setAttribute("aria-expanded", "false"));
-    panels.forEach((p) => {
+  groups.forEach((group) => {
+    const buttons = group.querySelectorAll(".qg-btn");
+    const panels = group.querySelectorAll(".qg-panel");
+    if (!buttons.length) return;
+
+    const closeAll = () => {
+      buttons.forEach((b) => b.setAttribute("aria-expanded", "false"));
+      panels.forEach((p) => {
+        p.classList.remove("open");
+        setTimeout(() => {
+          if (!p.classList.contains("open")) p.hidden = true;
+        }, 260);
+      });
+    };
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("aria-controls");
+        const panel = targetId ? group.querySelector("#" + targetId) : null;
+        if (!panel) return;
+        const wasOpen = btn.getAttribute("aria-expanded") === "true";
+        closeAll();
+        if (!wasOpen) {
+          btn.setAttribute("aria-expanded", "true");
+          panel.hidden = false;
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => panel.classList.add("open"));
+          });
+        }
+      });
+    });
+  });
+
+  // Esc closes any open panel across all groups
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    const openBtn = document.querySelector('[data-pill-group] .qg-btn[aria-expanded="true"]');
+    if (!openBtn) return;
+    const group = openBtn.closest("[data-pill-group]");
+    if (!group) return;
+    group.querySelectorAll(".qg-btn").forEach((b) => b.setAttribute("aria-expanded", "false"));
+    group.querySelectorAll(".qg-panel").forEach((p) => {
       p.classList.remove("open");
-      // wait for the exit transition before truly hiding, so screen-readers
-      // don't catch it mid-fade
       setTimeout(() => {
         if (!p.classList.contains("open")) p.hidden = true;
       }, 260);
     });
-  };
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const key = btn.dataset.panel;
-      const panel = document.getElementById("qg-" + key);
-      if (!panel) return;
-      const wasOpen = btn.getAttribute("aria-expanded") === "true";
-      closeAll();
-      if (!wasOpen) {
-        btn.setAttribute("aria-expanded", "true");
-        panel.hidden = false;
-        // let the browser register `hidden=false` before adding .open so the
-        // transition from the pre-state actually runs
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => panel.classList.add("open"));
-        });
-      }
-    });
+    openBtn.focus();
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      const openBtn = document.querySelector('.qg-btn[aria-expanded="true"]');
-      if (openBtn) {
-        closeAll();
-        openBtn.focus();
-      }
-    }
-  });
-
-  // Close when clicking outside the pill row / open panel
+  // Click outside closes any open panel in that group only
   document.addEventListener("click", (e) => {
-    const open = document.querySelector(".qg-panel.open");
-    if (!open) return;
-    const inside =
-      e.target.closest(".qg-panels") || e.target.closest(".qg-pills");
-    if (!inside) closeAll();
+    groups.forEach((group) => {
+      const openPanel = group.querySelector(".qg-panel.open");
+      if (!openPanel) return;
+      if (group.contains(e.target)) return;
+      group.querySelectorAll(".qg-btn").forEach((b) => b.setAttribute("aria-expanded", "false"));
+      group.querySelectorAll(".qg-panel").forEach((p) => {
+        p.classList.remove("open");
+        setTimeout(() => {
+          if (!p.classList.contains("open")) p.hidden = true;
+        }, 260);
+      });
+    });
   });
 })();
 

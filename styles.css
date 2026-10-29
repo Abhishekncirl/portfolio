@@ -1003,3 +1003,31 @@ body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
    fade matches the content below it — flip to dark where it meets dark. */
 .apple-dark + .section::before,
 .apple-dark ~ .section:first-of-type { position: relative; }
+
+/* Second dark zone (Skills + Education): same palette flip, plus a few
+   component-specific touches so the sections look native on dark */
+.apple-dark-2 .skill-col {
+  background: #1d1d1f;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.apple-dark-2 .skill-col h3 { color: #f5f5f7; }
+.apple-dark-2 .skill-col ul { color: #86868b; }
+.apple-dark-2 .skill-col li { border-bottom-color: rgba(255, 255, 255, 0.08); }
+
+.apple-dark-2 .two-col h3 { color: #f5f5f7; }
+.apple-dark-2 .edu li,
+.apple-dark-2 .certs li {
+  background: #1d1d1f;
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+.apple-dark-2 .edu li b,
+.apple-dark-2 .certs li b { color: #f5f5f7; }
+.apple-dark-2 .edu li,
+.apple-dark-2 .certs li { color: #86868b; }
+.apple-dark-2 .edu li span { color: #86868b; }
+
+/* Education tabs: tighten pill row, centre the group */
+.ed-tabs { max-width: 760px; margin: 0 auto; }
+.ed-tabs .qg-pills { margin-bottom: 1rem; }
+.ed-tabs .qg-panel { margin-top: 0; }
