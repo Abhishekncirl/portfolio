@@ -843,16 +843,95 @@ body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
     padding: 1rem 1.5rem;
     transform: translateY(-110%);
     transition: transform 280ms var(--ease-out-expo);
-    box-shadow: 0 18px 36px rgba(11, 18, 32, 0.08);
-    z-index: 45;
+    box-shadow: 0 18px 36px rgba(29, 29, 31, 0.14);
+    z-index: 60;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
   }
   .nav-links.open { transform: translateY(0); }
   .nav-toggle { display: flex; }
+  /* Hero takes less vertical space on tablets too */
+  .hero { padding-top: 2rem; padding-bottom: 2.5rem; }
 }
 
 @media (max-width: 500px) {
-  .hero { padding-top: 3rem; }
-  .footer { flex-direction: column; gap: 0.4rem; text-align: center; }
+  /* --- Phone pass: tighten everything, drop justified text, respect notch --- */
+  body { padding-bottom: env(safe-area-inset-bottom); }
+
+  /* Hero */
+  .hero { padding: 2rem 1rem 2.25rem; }
+  .profile-banner { height: 170px; }
+  .profile-avatar { width: 140px; height: 140px; margin-top: -80px; border-width: 4px; }
+  .profile-head { margin-top: 1rem; padding: 0 0.25rem; }
+  .profile-head h1 { font-size: clamp(1.9rem, 7vw, 2.4rem); }
+  .profile-tagline { font-size: 1rem; }
+  .hero-cta { gap: 0.55rem; }
+  .btn { padding: 0.65rem 1rem; font-size: 0.95rem; }
+  .hero-meta { gap: 0.75rem 1rem; font-size: 0.9rem; }
+  .hero-card { padding: 1rem 1.1rem; margin-top: 1.5rem; }
+
+  /* Sections generally tighter */
+  .section { padding: 2.75rem 1rem; }
+  .section-head { margin-bottom: 1.4rem; }
+
+  /* Prose: justify + hyphens read badly on narrow screens */
+  .lede,
+  .about-grid p,
+  .t-body li,
+  .project p,
+  .contact-lede { text-align: left; hyphens: manual; }
+
+  /* Quick-glance pills: smaller, tighter row */
+  .quick-glance { padding: 0 1rem 2rem; }
+  .qg-pills { gap: 0.45rem; }
+  .qg-btn { padding: 0.4rem 0.45rem 0.4rem 0.95rem; font-size: 0.9rem; gap: 0.5rem; }
+  .qg-plus { width: 22px; height: 22px; flex: 0 0 22px; }
+  .qg-panel { padding: 1.1rem 1.1rem; margin-top: 0.8rem; }
+  .qg-panel h3 { font-size: 1rem; }
+
+  /* Timeline: give copy more width */
+  .t-item { padding-left: 1.9rem; margin-bottom: 1.8rem; }
+  .timeline::before { left: 7px; }
+  .t-marker { left: 1px; width: 14px; height: 14px; top: 7px; }
+  .t-body { padding: 1rem 1.1rem; }
+  .t-body h3 { font-size: 1.05rem; }
+
+  /* Project cards + Featured project */
+  .projects { gap: 0.9rem; }
+  .project { padding: 1.1rem; }
+  .project-feature { padding: 1.3rem 1.2rem; }
+  .project h3 { font-size: 1rem; }
+  .project header { gap: 0.5rem; }
+  .tag { font-size: 0.65rem; padding: 0.18rem 0.5rem; }
+
+  /* Skills columns */
+  .skills { gap: 0.9rem; }
+  .skill-col { padding: 1rem 1.1rem; }
+
+  /* Contact */
+  .contact-grid { gap: 0.7rem; }
+  .contact-card { padding: 0.95rem 1.05rem; }
+
+  /* Footer */
+  .footer { padding: 2rem 1rem; flex-direction: column; gap: 0.4rem; text-align: center; }
+
+  /* Nav + mobile menu */
+  .nav { padding: 0.75rem 1rem; }
+  .brand-name { font-size: 0.95rem; }
+  .nav-links {
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    padding: 0.8rem 1.25rem 1.2rem;
+    gap: 0.3rem;
+  }
+  .nav-links a { padding: 0.6rem 0; font-size: 1rem; }
+  .nav-toggle { padding: 10px 8px; }
+}
+
+/* Case the viewport is landscape phone / small tablet: still cramped vertically */
+@media (max-width: 500px) and (orientation: landscape) {
+  .profile-banner { height: 140px; }
+  .profile-avatar { width: 120px; height: 120px; margin-top: -70px; }
 }
 
 /* MOTION / TRANSPARENCY / CONTRAST PREFERENCES */
