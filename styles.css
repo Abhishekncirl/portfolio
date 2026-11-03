@@ -674,6 +674,27 @@ body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
 .project p b { color: var(--text); font-weight: 600; }
 .project .chips { margin-top: auto; padding-top: 0.8rem; }
 
+/* FREELANCE SECTION */
+.freelance-lede {
+  color: var(--muted);
+  max-width: 70ch;
+  margin: 0 0 1.5rem;
+  font-size: 1.05rem;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+.project-feature {
+  grid-column: 1 / -1;
+  padding: 1.8rem 2rem;
+  border-left: 3px solid var(--accent);
+}
+.project-feature h3 { font-size: 1.25rem; }
+.project-feature .tag {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
 /* SKILLS */
 .skills {
   display: grid;
