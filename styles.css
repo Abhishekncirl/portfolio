@@ -70,8 +70,8 @@ button:focus-visible,
   outline-offset: 2px;
 }
 
-/* Anchor jumps land below the sticky nav */
-section[id], main[id] { scroll-margin-top: 80px; }
+/* Small scroll-margin so section anchors don't press flush against the viewport edge */
+section[id], main[id] { scroll-margin-top: 16px; }
 
 /* NAV */
 .nav {
@@ -169,7 +169,8 @@ body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
 .hero {
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 3rem;
+  padding: 3.5rem 1.5rem 3rem;
+  padding-top: calc(3.5rem + env(safe-area-inset-top));
   display: flex;
   flex-direction: column;
   align-items: center;
