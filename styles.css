@@ -398,7 +398,7 @@ body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
   transition: transform 320ms var(--ease-out-expo), color 180ms ease;
 }
 .qg-plus .qg-plus-ring { transition: fill 180ms ease; }
-.qg-plus .qg-plus-mark { fill: #ffffff; }
+.qg-plus .qg-plus-mark { stroke: #ffffff; fill: none; }
 .qg-btn:hover .qg-plus { color: var(--accent-strong); }
 .qg-btn[aria-expanded="true"] { background: #000000; box-shadow: 0 12px 28px rgba(29, 29, 31, 0.28); }
 .qg-btn[aria-expanded="true"] .qg-plus { transform: rotate(45deg); }
@@ -995,7 +995,7 @@ body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
 }
 .apple-dark .qg-plus { color: var(--accent); }
-.apple-dark .qg-plus .qg-plus-mark { fill: #ffffff; }
+.apple-dark .qg-plus .qg-plus-mark { stroke: #ffffff; fill: none; }
 .apple-dark .qg-btn:focus-visible { outline-color: #ffffff; }
 
 /* Quick-glance panels and their inner cards */
