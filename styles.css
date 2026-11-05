@@ -706,6 +706,52 @@ body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
 .project p b { color: var(--text); font-weight: 600; }
 .project .chips { margin-top: auto; padding-top: 0.8rem; }
 
+/* Cross-linking into the MSc thesis page */
+.snap-link,
+.prose-link,
+.edu-cta {
+  color: var(--accent);
+  font-weight: inherit;
+  transition: color 160ms ease;
+}
+.snap-link:hover,
+.prose-link:hover,
+.edu-cta:hover { color: var(--accent-strong); }
+.prose-link {
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 102, 204, 0.4);
+  text-underline-offset: 3px;
+}
+.prose-link:hover { text-decoration-color: currentColor; }
+.edu-cta {
+  display: inline-block;
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+.edu-featured { position: relative; }
+.edu-featured::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Dark-zone variants: brighter blue for contrast on #000 */
+.apple-dark .snap-link,
+.apple-dark .prose-link,
+.apple-dark-2 .edu-cta {
+  color: #5eb7ff;
+}
+.apple-dark .snap-link:hover,
+.apple-dark .prose-link:hover,
+.apple-dark-2 .edu-cta:hover { color: #9fd1ff; }
+.apple-dark .prose-link { text-decoration-color: rgba(94, 183, 255, 0.45); }
+.apple-dark-2 .edu-featured::before { background: #5eb7ff; }
+
 /* FREELANCE SECTION */
 .freelance-lede {
   color: var(--muted);
